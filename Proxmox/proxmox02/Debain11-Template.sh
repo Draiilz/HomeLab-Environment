@@ -49,3 +49,14 @@ pvesh set /nodes/${ProxmoxHost}/qemu/${VMID}/config \
 # Set the boot drive size
 pvesh set /nodes/${ProxmoxHost}/qemu/${VMID}/resize \
     -disk=scsi0 --size="${DiskSize}G"
+
+
+#************************************************************************************#
+#                                    NOTES                                           #       
+#************************************************************************************#
+#
+#
+# Guest Agent does not run by default
+# You must set the static IP of the cloud init file before first boot 
+# Next install Qemu Guest Agent
+# apt update && apt -y install qemu-guest-agent
