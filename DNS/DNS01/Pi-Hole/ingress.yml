@@ -1,0 +1,29 @@
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: pi-hole-danielrailsback-extname
+#   annotations:
+#     external-dns.alpha.kubernetes.io/hostname: pi-hole.danielrailsback.com
+#     external-dns.alpha.kubernetes.io/ttl: "300"
+#   labels:
+#     app.kubernetes.io/instance: pi-hole-ce
+# spec:
+#   type: ExternalName
+#   externalName: kube.danielrailsback.com
+#   sessionAffinity: None
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: dns01-danielrailsback-web
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`dns01.danielrailsback.com`)
+      kind: Rule
+      services:
+        - name: pihole-web
+          port: 80
+
