@@ -19,3 +19,20 @@ resources:
     memory: 128Mi
 # If using in the real world, set up admin.existingSecret instead.
 adminPassword: admin
+
+# -- default upstream DNS 1 server to use
+DNS1: "8.8.8.8"
+# -- default upstream DNS 2 server to use
+DNS2: "8.8.4.4"
+
+# -- Configuration for the DNS service on port 53
+serviceDns:
+
+  # -- deploys a mixed (TCP + UDP) Service instead of separate ones
+  mixedService: false
+
+  # -- `spec.type` for the DNS Service
+  type: NodePort
+
+  # -- The port of the DNS service
+  port: 63
