@@ -25,14 +25,10 @@ DNS1: "8.8.8.8"
 # -- default upstream DNS 2 server to use
 DNS2: "8.8.4.4"
 
-# -- Configuration for the DNS service on port 53
-serviceDns:
+podDnsConfig:
+  enabled: true
+  policy: "None"
+  nameservers:
+  - 8.8.8.8
 
-  # -- deploys a mixed (TCP + UDP) Service instead of separate ones
-  mixedService: false
-
-  # -- `spec.type` for the DNS Service
-  type: NodePort
-
-  # -- The port of the DNS service
-  port: 63
+DNSMASQ_LISTENING: all
