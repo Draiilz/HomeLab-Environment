@@ -31,4 +31,12 @@ podDnsConfig:
   nameservers:
   - 8.8.8.8
 
-DNSMASQ_LISTENING: all
+privileged: "true"
+
+
+serviceDns:
+  # -- `spec.type` for the DNS Service
+  type: ClusterIP
+
+  # -- The port of the DNS service
+  port: 53
